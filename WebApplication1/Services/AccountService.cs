@@ -17,7 +17,6 @@ namespace WebApplication1.Services
             var entity = new AccountEntity
             {
                 Id = model.Id,
-                Code = model.Code,
                 IncomingSaldoActive = model.IncomingSaldoActive,
                 IncomingSaldoPassive = model.IncomingSaldoPassive,
                 ClassId = model.ClassId
@@ -31,7 +30,6 @@ namespace WebApplication1.Services
             return list.Select(a => new AccountModel
             {
                 Id = a.Id,
-                Code = a.Code,
                 IncomingSaldoActive = a.IncomingSaldoActive,
                 IncomingSaldoPassive = a.IncomingSaldoPassive,
                 ClassId = a.ClassId

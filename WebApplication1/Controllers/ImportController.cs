@@ -62,7 +62,7 @@ namespace WebApplication1.Controllers
                     }
                     var account = new AccountModel
                     {
-                        Code = worksheet.Cells[row, 1].Text,
+                        Id = int.Parse(worksheet.Cells[row, 1].Text),
                         IncomingSaldoActive = decimal.Parse(worksheet.Cells[row, 2].Text),
                         IncomingSaldoPassive = decimal.Parse(worksheet.Cells[row, 3].Text),
                         ClassId = classId

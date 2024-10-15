@@ -8,9 +8,6 @@ namespace WebApplication1.Entities
         [Column("Id")]
         public int Id { get; set; }
 
-        [Column("Code")]
-        public string Code { get; set; }
-
         [Column("IncomingSaldoActive")]
         public decimal IncomingSaldoActive { get; set; }
 

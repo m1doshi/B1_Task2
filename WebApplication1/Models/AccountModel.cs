@@ -3,7 +3,6 @@
     public class AccountModel
     {
         public int Id { get; set; }
-        public string Code { get; set; }
         public decimal IncomingSaldoActive {  get; set; }
         public decimal IncomingSaldoPassive { get; set; }
         public int ClassId { get; set; }
