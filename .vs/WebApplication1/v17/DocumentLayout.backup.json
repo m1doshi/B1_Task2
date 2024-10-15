@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\entities\\transactionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\entities\\transactionentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\entities\\classentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\entities\\classentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\entities\\accountentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\entities\\accountentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeDocumentMoniker": "WebApplication1\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeToolTip": "WebApplication1\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-15T20:16:24.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Entities\\AccountEntity.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Entities\\AccountEntity.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Entities\\AccountEntity.cs",
+              "RelativeToolTip": "WebApplication1\\Entities\\AccountEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T20:15:58.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ClassEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Entities\\ClassEntity.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Entities\\ClassEntity.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Entities\\ClassEntity.cs",
+              "RelativeToolTip": "WebApplication1\\Entities\\ClassEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T20:15:50.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Entities\\TransactionEntity.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Entities\\TransactionEntity.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Entities\\TransactionEntity.cs",
+              "RelativeToolTip": "WebApplication1\\Entities\\TransactionEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T20:15:47.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ImportController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Controllers\\ImportController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\ImportController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Controllers\\ImportController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\ImportController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAWwCsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T19:56:26.417Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
