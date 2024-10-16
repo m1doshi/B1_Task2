@@ -21,8 +21,7 @@ namespace WebApplication1.Services
                 Credit = model.Credit,
                 AccountId = model.AccountId
             };
-            await repository.CreateTurnover(entity);
-            return model.Id;
+            return await repository.CreateTurnover(entity); ;
         }
 
         public async Task<IEnumerable<TurnoverModel>> GetAllTurnovers()
@@ -35,6 +34,18 @@ namespace WebApplication1.Services
                 Credit = t.Credit,
                 AccountId = t.AccountId
             });
+        }
+
+        public async Task<TurnoverModel> GetLastTurnover()
+        {
+            var entity = await repository.GetLastTurnover();
+            return new TurnoverModel
+            {
+                Id = entity.Id,
+                Debit = entity.Debit,
+                Credit = entity.Credit,
+                AccountId = entity.AccountId
+            };
         }
     }
 }

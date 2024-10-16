@@ -6,5 +6,6 @@ namespace WebApplication1.Repositories.Interfaces
     {
         Task<int> CreateIncomingSaldo(IncomingSaldoEntity entity);
         Task<IEnumerable<IncomingSaldoEntity>> GetAllIncomingSaldos();
+        Task<IncomingSaldoEntity> GetLastIncomingSaldo();
     }
 }

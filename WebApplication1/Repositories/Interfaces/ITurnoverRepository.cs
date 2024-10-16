@@ -6,5 +6,6 @@ namespace WebApplication1.Repositories.Interfaces
     {
         Task<int> CreateTurnover(TurnoverEntity entity);
         Task<IEnumerable<TurnoverEntity>> GetAllTurnovers();
+        Task<TurnoverEntity> GetLastTurnover();
     }
 }

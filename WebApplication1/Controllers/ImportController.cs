@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
 {
     [ApiController]
     [Route("importController")]
-    public class ImportController : ControllerBase
+    public class ImportController : Controller
     {
         private readonly IClassService classService;
         private readonly INewAccountService newAccountService;
@@ -28,6 +28,11 @@ namespace WebApplication1.Controllers
             this.incomingSaldoService = incomingSaldoService;
             this.outgoingSaldoService = outgoingSaldoService;
         }
+        //[HttpGet]
+        //public IActionResult Import()
+        //{
+        //    return View(); // Вернуть представление Import
+        //}
 
         [HttpPost("import")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -49,11 +54,7 @@ namespace WebApplication1.Controllers
                 for (int row = 9; row < rowCount; row++)
                 {
                     var currentRow = worksheet.Cells[row, 1].Text.Trim();
-                    if (string.IsNullOrEmpty(currentRow))
-                    {
-                        continue;
-                    }
-                    if (currentRow == "ПО КЛАССУ" || currentRow == "БАЛАНС" || Regex.IsMatch(currentRow, @"^\d{2}$"))
+                    if (string.IsNullOrEmpty(currentRow) || currentRow == "ПО КЛАССУ" || currentRow == "БАЛАНС" || Regex.IsMatch(currentRow, @"^\d{2}$"))
                     {
                         continue;
                     }
@@ -79,20 +80,22 @@ namespace WebApplication1.Controllers
                         Passive = decimal.Parse(worksheet.Cells[row, 3].Text),
                         AccountId = account.Id
                     };
-                    var lastIncomingSaldoId = await incomingSaldoService.CreateIncomingSaldo(incomingSaldo);
+                    await incomingSaldoService.CreateIncomingSaldo(incomingSaldo);
                     var turnover = new TurnoverModel
                     {
                         Debit = decimal.Parse(worksheet.Cells[row, 4].Text),
                         Credit = decimal.Parse(worksheet.Cells[row, 5].Text),
                         AccountId = account.Id
                     };
-                    var lastTurnoverId = await turnoverService.CreateTurnover(turnover);
+                    await turnoverService.CreateTurnover(turnover);
+                    var lastIncomingSaldo = await incomingSaldoService.GetLastIncomingSaldo();
+                    var lastTurnover = await turnoverService.GetLastTurnover(); 
                     var outgoingSaldo = new OutgoingSaldoModel
                     {
                         Active = decimal.Parse(worksheet.Cells[row, 6].Text),
                         Passive = decimal.Parse(worksheet.Cells[row, 7].Text),
-                        IncomingSaldoId = lastIncomingSaldoId,
-                        TurnoverId = lastTurnoverId
+                        IncomingSaldoId = lastIncomingSaldo.Id,
+                        TurnoverId = lastTurnover.Id
                     };
                     await outgoingSaldoService.CreateOutgoingSaldo(outgoingSaldo);
                 }

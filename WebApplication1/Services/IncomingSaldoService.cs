@@ -22,8 +22,7 @@ namespace WebApplication1.Services
                 Passive = model.Passive,
                 AccountId = model.AccountId
             };
-            await repository.CreateIncomingSaldo(entity);
-            return model.Id;
+            return await repository.CreateIncomingSaldo(entity); ;
         }
 
         public async Task<IEnumerable<IncomingSaldoModel>> GetAllIncomingSaldos()
@@ -36,6 +35,17 @@ namespace WebApplication1.Services
                 Passive = s.Passive,
                 AccountId = s.AccountId
             });
+        }
+        public async Task<IncomingSaldoModel> GetLastIncomingSaldo()
+        {
+            var entity = await repository.GetLastIncomingSaldo();
+            return new IncomingSaldoModel
+            {
+                Id = entity.Id,
+                Active = entity.Active,
+                Passive = entity.Passive,
+                AccountId = entity.AccountId
+            };
         }
     }
 }

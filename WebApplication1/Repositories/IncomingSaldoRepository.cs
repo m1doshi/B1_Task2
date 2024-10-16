@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApplication1.Database;
 using WebApplication1.Entities;
+using WebApplication1.Models;
 using WebApplication1.Repositories.Interfaces;
 
 namespace WebApplication1.Repositories
@@ -24,5 +25,10 @@ namespace WebApplication1.Repositories
         {
             return await context.IncomingSaldos.ToListAsync();
         }
+
+        public async Task<IncomingSaldoEntity> GetLastIncomingSaldo()
+        {
+            return await context.IncomingSaldos.OrderByDescending(s => s.Id).FirstOrDefaultAsync();
+        } 
     }
 }

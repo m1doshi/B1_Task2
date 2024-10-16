@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Import Excel";
+}
+
+<h2>Import Excel File</h2>
+
+<form asp-controller="YourControllerName" asp-action="ImportExcel" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Select Excel File:</label>
+        <input type="file" class="form-control" id="file" name="file" accept=".xlsx, .xls" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Message"]
+    </div>
+}

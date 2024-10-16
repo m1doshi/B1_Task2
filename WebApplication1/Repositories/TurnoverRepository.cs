@@ -12,17 +12,19 @@ namespace WebApplication1.Repositories
         {
             this.context = context;
         }
-
         public async Task<int> CreateTurnover(TurnoverEntity entity)
         {
             await context.Turnovers.AddAsync(entity);
             await context.SaveChangesAsync();
             return entity.Id;
         }
-
         public async Task<IEnumerable<TurnoverEntity>> GetAllTurnovers()
         {
             return await context.Turnovers.ToListAsync();
+        }
+        public async Task<TurnoverEntity> GetLastTurnover()
+        {
+            return await context.Turnovers.OrderByDescending(t => t.Id).FirstOrDefaultAsync();
         }
     }
 }

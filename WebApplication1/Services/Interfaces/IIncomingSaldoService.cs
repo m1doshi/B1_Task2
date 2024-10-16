@@ -6,5 +6,6 @@ namespace WebApplication1.Services.Interfaces
     {
         Task<int> CreateIncomingSaldo(IncomingSaldoModel model);
         Task<IEnumerable<IncomingSaldoModel>> GetAllIncomingSaldos();
+        Task<IncomingSaldoModel> GetLastIncomingSaldo();
     }
 }

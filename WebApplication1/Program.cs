@@ -6,7 +6,7 @@ using WebApplication1.Services;
 using WebApplication1.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBaseConfig")));
@@ -36,3 +36,4 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
