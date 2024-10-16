@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
-using System.Security.Principal;
 using System.Text.RegularExpressions;
 using WebApplication1.Models;
-using WebApplication1.Repositories.Interfaces;
+using WebApplication1.Services;
 using WebApplication1.Services.Interfaces;
 
 namespace WebApplication1.Controllers
@@ -18,12 +17,14 @@ namespace WebApplication1.Controllers
         private readonly IIncomingSaldoService incomingSaldoService;
         private readonly IOutgoingSaldoService outgoingSaldoService;
         private readonly IFileInfoService fileInfoService;
+        private readonly DataService dataService;
         public ImportController(IClassService classService, 
             INewAccountService newAccountService, 
             ITurnoverService turnoverService,
             IIncomingSaldoService incomingSaldoService,
             IOutgoingSaldoService outgoingSaldoService,
-            IFileInfoService fileInfoService)
+            IFileInfoService fileInfoService,
+            DataService dataService)
         {
             this.classService = classService;
             this.newAccountService = newAccountService;
@@ -31,6 +32,7 @@ namespace WebApplication1.Controllers
             this.incomingSaldoService = incomingSaldoService;
             this.outgoingSaldoService = outgoingSaldoService;
             this.fileInfoService = fileInfoService;
+            this.dataService = dataService;
         }
         [HttpPost("import")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -51,6 +53,7 @@ namespace WebApplication1.Controllers
                 };
                 await fileInfoService.CreateFileInfo(fileInfo);
                 var currentFile = await fileInfoService.GetFileInfoByName(file.Name);
+                var currentFileId = currentFile.Id;
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 using (var package = new ExcelPackage(file.OpenReadStream()))
                 {
@@ -123,29 +126,6 @@ namespace WebApplication1.Controllers
             return View("Import");
         }
 
-        [HttpGet("GetImportedData")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetImportedData()
-        {
-            var classes = await classService.GetAllClasses(); 
-            var accounts = await newAccountService.GetAllAccounts(); 
-            var incomingSaldos = await incomingSaldoService.GetAllIncomingSaldos();
-            var turnovers = await turnoverService.GetAllTurnovers();
-            var outgoingSaldos = await outgoingSaldoService.GetAllOutgoingSaldos(); 
-
-            var viewModel = new ImportViewModel
-            {
-                Classes = classes,
-                Accounts = accounts,
-                IncomingSaldos = incomingSaldos,
-                Turnovers = turnovers,
-                OutgoingSaldos = outgoingSaldos
-            };
-            return View(viewModel);
-        }
-
         [HttpGet("GetImportedFiles")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -154,6 +134,16 @@ namespace WebApplication1.Controllers
         {
             var files = await fileInfoService.GetAllFileInfos();
             return View(files);
+        }
+
+        [HttpGet("ViewFileData")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult ViewFileData(int id)
+        {
+            var data = dataService.GetDataByFileId(id);
+            return View(data);
         }
 
         [HttpGet]

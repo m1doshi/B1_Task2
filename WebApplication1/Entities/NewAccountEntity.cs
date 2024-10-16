@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using WebApplication1.Models;
 
 namespace WebApplication1.Entities
 {
@@ -13,5 +14,9 @@ namespace WebApplication1.Entities
 
         [Column("FileId")]
         public int FileId { get; set; }
+        public ClassEntity Class { get; set; }
+        public FileInfoEntity File { get; set; }
+        public ICollection<IncomingSaldoEntity> IncomingSaldos { get; set; }
+        public ICollection<TurnoverEntity> Turnovers { get; set; }
     }
 }

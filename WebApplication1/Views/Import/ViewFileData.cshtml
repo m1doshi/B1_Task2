@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.AccountDataViewModel>
+
+<h2>Данные для выбранного файла</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Класс</th>
+                <th>ID Счета</th>
+                <th>Входящее сальдо (Актив)</th>
+                <th>Входящее сальдо (Пассив)</th>
+                <th>Обороты (Дебет)</th>
+                <th>Обороты (Кредит)</th>
+                <th>Исходящее сальдо (Актив)</th>
+                <th>Исходящее сальдо (Пассив)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var group in Model.GroupBy(m => m.ClassName))
+            {
+                <tr>
+                    <td colspan="8"><strong>@group.Key</strong></td>
+                </tr>
+                @foreach (var item in group)
+                {
+                    <tr>
+                        <td></td> 
+                        <td>@item.AccountId</td>
+                        <td>@item.IncomingSaldo?.Active</td>
+                        <td>@item.IncomingSaldo?.Passive</td>
+                        <td>@item.Turnover?.Debit</td>
+                        <td>@item.Turnover?.Credit</td>
+                        <td>@item.OutgoingSaldo?.Active</td>
+                        <td>@item.OutgoingSaldo?.Passive</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Нет данных для отображения.</p>
+}

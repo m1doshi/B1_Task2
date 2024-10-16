@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using WebApplication1.Models;
 
 namespace WebApplication1.Entities
 {
@@ -19,5 +20,7 @@ namespace WebApplication1.Entities
 
         [Column("TurnoverId")]
         public int TurnoverId { get; set; }
+        public IncomingSaldoEntity IncomingSaldo { get; set; }
+        public TurnoverEntity Turnover { get; set; }
     }
 }

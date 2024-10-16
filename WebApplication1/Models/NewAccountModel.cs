@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Claims;
 
 namespace WebApplication1.Models
 {

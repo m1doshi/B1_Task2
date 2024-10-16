@@ -6,5 +6,6 @@ namespace WebApplication1.Services.Interfaces
     {
         Task<int> CreateAccount(NewAccountModel model);
         Task<IEnumerable<NewAccountModel>> GetAllAccounts();
+        Task<IEnumerable<NewAccountModel>> GetAccountsByFileId(int id);
     }
 }

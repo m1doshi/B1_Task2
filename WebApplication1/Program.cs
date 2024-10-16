@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using WebApplication1.Database;
 using WebApplication1.Repositories;
 using WebApplication1.Repositories.Interfaces;
@@ -23,6 +22,8 @@ builder.Services.AddScoped<IIncomingSaldoRepository, IncomingSaldoRepository>();
 builder.Services.AddScoped<IOutgoingSaldoRepository, OutgoingSaldoRepository>();
 builder.Services.AddScoped<IFileInfoService, FileInfoService>();
 builder.Services.AddScoped<IFileInfoRepository, FileInfoRepository>();
+builder.Services.AddScoped<DataRepository>();
+builder.Services.AddScoped<DataService>();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -30,7 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = "swagger"; // Swagger будет доступен по адресу /swagger
+        c.RoutePrefix = "swagger";
     });
 }
 app.UseHttpsRedirection();

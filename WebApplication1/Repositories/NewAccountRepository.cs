@@ -19,6 +19,10 @@ namespace WebApplication1.Repositories
             await context.SaveChangesAsync();
             return entity.Id;
         }
+        public async Task<IEnumerable<NewAccountEntity>> GetAccountsByFileId(int id)
+        {
+            return await context.Accounts.Where(a => a.FileId == id).ToListAsync();
+        }
 
         public async Task<IEnumerable<NewAccountEntity>> GetAllAccounts()
         {

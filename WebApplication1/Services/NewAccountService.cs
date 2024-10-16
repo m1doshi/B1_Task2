@@ -17,10 +17,21 @@ namespace WebApplication1.Services
             var entity = new NewAccountEntity
             {
                 Id = model.Id,
-                ClassId = model.ClassId
+                ClassId = model.ClassId,
+                FileId = model.FileId
             };
             await repository.CreateAccount(entity);
             return model.Id;
+        }
+        public async Task<IEnumerable<NewAccountModel>> GetAccountsByFileId(int id)
+        {
+            var list = await repository.GetAccountsByFileId(id);
+            return list.Select(x => new NewAccountModel
+            {
+                Id = x.Id,
+                ClassId = x.ClassId,
+                FileId = x.FileId
+            }).ToList();
         }
         public async Task<IEnumerable<NewAccountModel>> GetAllAccounts()
         {
@@ -28,7 +39,8 @@ namespace WebApplication1.Services
             return list.Select(a => new NewAccountModel
             {
                 Id = a.Id,
-                ClassId = a.ClassId
+                ClassId = a.ClassId,
+                FileId = a.FileId
             });
         }
     }

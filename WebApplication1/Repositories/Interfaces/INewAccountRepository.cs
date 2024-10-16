@@ -6,5 +6,6 @@ namespace WebApplication1.Repositories.Interfaces
     {
         Task<int> CreateAccount(NewAccountEntity entity);
         Task<IEnumerable<NewAccountEntity>> GetAllAccounts();
+        Task<IEnumerable<NewAccountEntity>> GetAccountsByFileId(int id);
     }
 }
