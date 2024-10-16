@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebApplication1.Models.FileInfoModel>
+
+@{
+    ViewData["Title"] = "Список загруженных файлов";
+}
+<h2>Список загруженных файлов</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Идентификатор</th>
+            <th>Имя файла</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model)
+        {
+            <tr>
+                <td>@file.Id</td>
+                <td>@file.FileName</td>
+                <td>
+                    <a asp-controller="Import" asp-action="GetImportedFiles" asp-route-id="@file.Id" class="btn btn-info">Просмотреть данные</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

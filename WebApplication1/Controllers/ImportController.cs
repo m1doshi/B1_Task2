@@ -3,6 +3,7 @@ using OfficeOpenXml;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using WebApplication1.Models;
+using WebApplication1.Repositories.Interfaces;
 using WebApplication1.Services.Interfaces;
 
 namespace WebApplication1.Controllers
@@ -16,17 +17,20 @@ namespace WebApplication1.Controllers
         private readonly ITurnoverService turnoverService;
         private readonly IIncomingSaldoService incomingSaldoService;
         private readonly IOutgoingSaldoService outgoingSaldoService;
+        private readonly IFileInfoService fileInfoService;
         public ImportController(IClassService classService, 
             INewAccountService newAccountService, 
             ITurnoverService turnoverService,
             IIncomingSaldoService incomingSaldoService,
-            IOutgoingSaldoService outgoingSaldoService)
+            IOutgoingSaldoService outgoingSaldoService,
+            IFileInfoService fileInfoService)
         {
             this.classService = classService;
             this.newAccountService = newAccountService;
             this.turnoverService = turnoverService;
             this.incomingSaldoService = incomingSaldoService;
             this.outgoingSaldoService = outgoingSaldoService;
+            this.fileInfoService = fileInfoService;
         }
         [HttpPost("import")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -41,6 +45,12 @@ namespace WebApplication1.Controllers
             }
             try
             {
+                var fileInfo = new FileInfoModel
+                {
+                    FileName = file.Name
+                };
+                await fileInfoService.CreateFileInfo(fileInfo);
+                var currentFile = await fileInfoService.GetFileInfoByName(file.Name);
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 using (var package = new ExcelPackage(file.OpenReadStream()))
                 {
@@ -73,7 +83,8 @@ namespace WebApplication1.Controllers
                         var account = new NewAccountModel
                         {
                             Id = int.Parse(worksheet.Cells[row, 1].Text),
-                            ClassId = lastClass.Id
+                            ClassId = lastClass.Id,
+                            FileId = currentFile.Id
                         };
                         await newAccountService.CreateAccount(account);
                         var incomingSaldo = new IncomingSaldoModel
@@ -132,14 +143,23 @@ namespace WebApplication1.Controllers
                 Turnovers = turnovers,
                 OutgoingSaldos = outgoingSaldos
             };
+            return View(viewModel);
+        }
 
-            return View("Import", viewModel);
+        [HttpGet("GetImportedFiles")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetImportedFiles()
+        {
+            var files = await fileInfoService.GetAllFileInfos();
+            return View(files);
         }
 
         [HttpGet]
         public IActionResult Import()
         {
-            return View(); // Возвращаем представление Import.cshtml
+            return View();
         }
     }
 }

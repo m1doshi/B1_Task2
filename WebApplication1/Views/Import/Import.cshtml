@@ -1,6 +1,4 @@
-﻿@using System.Linq;
-@using WebApplication1.Models;
-@{
+﻿@{
     ViewData["Title"] = "Импорт данных из Excel";
 }
 <h2>Импорт данных из Excel</h2>
@@ -22,74 +20,7 @@
     </div>
 }
 
-@model dynamic
-@{
-    var classes = (IEnumerable<ClassModel>)Model.Classes;
-    var accounts = (IEnumerable<NewAccountModel>)Model.Accounts;
-    var incomingSaldos = (IEnumerable<IncomingSaldoModel>)Model.IncomingSaldos;
-    var turnovers = (IEnumerable<TurnoverModel>)Model.Turnovers;
-    var outgoingSaldos = (IEnumerable<OutgoingSaldoModel>)Model.OutgoingSaldos;
-}
+<div>
+    <a asp-controller="Import" asp-action="GetImportedFiles" class="btn btn-secondary">Отобразить список загруженных файлов</a>
+</div>
 
-<h3>Данные из базы данных</h3>
-
-@if (classes != null && classes.Any())
-{
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Класс</th>
-                <th>Счет</th>
-                <th>Входящее сальдо (Актив)</th>
-                <th>Входящее сальдо (Пассив)</th>
-                <th>Обороты (Дебет)</th>
-                <th>Обороты (Кредит)</th>
-                <th>Исходящее сальдо (Актив)</th>
-                <th>Исходящее сальдо (Пассив)</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var classModel in classes)
-            {
-                var filteredAccounts = accounts
-                .Where(a => a.ClassId == classModel.Id)
-                .ToList();
-
-                if (!filteredAccounts.Any())
-                {
-                    continue;
-                }
-
-                <tr>
-                    <td colspan="8" style="font-weight:bold;">@classModel.Name</td>
-                </tr>
-
-                @foreach (var account in filteredAccounts)
-                {
-                    var incomingSaldo = incomingSaldos.FirstOrDefault(i => i.AccountId == account.Id);
-                    var turnover = turnovers.FirstOrDefault(t => t.AccountId == account.Id);
-
-                    // Используем IncomingSaldoId и TurnoverId для поиска outgoingSaldo
-                    var outgoingSaldo = outgoingSaldos.FirstOrDefault(o =>
-                    o.IncomingSaldoId == incomingSaldo?.Id &&
-                    o.TurnoverId == turnover?.Id);
-
-                    <tr>
-                        <td></td> <!-- Пустая ячейка, чтобы класс не повторялся -->
-                        <td>@account.Id</td>
-                        <td>@incomingSaldo?.Active</td>
-                        <td>@incomingSaldo?.Passive</td>
-                        <td>@turnover?.Debit</td>
-                        <td>@turnover?.Credit</td>
-                        <td>@outgoingSaldo?.Active</td>
-                        <td>@outgoingSaldo?.Passive</td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Нет данных для отображения.</p>
-}

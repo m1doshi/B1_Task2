@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using WebApplication1.Database;
 using WebApplication1.Repositories;
 using WebApplication1.Repositories.Interfaces;
@@ -20,6 +21,8 @@ builder.Services.AddScoped<INewAccountRepository, NewAccountRepository>();
 builder.Services.AddScoped<ITurnoverRepository, TurnoverRepository>();
 builder.Services.AddScoped<IIncomingSaldoRepository, IncomingSaldoRepository>();
 builder.Services.AddScoped<IOutgoingSaldoRepository, OutgoingSaldoRepository>();
+builder.Services.AddScoped<IFileInfoService, FileInfoService>();
+builder.Services.AddScoped<IFileInfoRepository, FileInfoRepository>();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

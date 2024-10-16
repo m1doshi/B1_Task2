@@ -10,5 +10,8 @@ namespace WebApplication1.Entities
 
         [Column("ClassId")]
         public int ClassId { get; set; }
+
+        [Column("FileId")]
+        public int FileId { get; set; }
     }
 }

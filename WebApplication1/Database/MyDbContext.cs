@@ -15,5 +15,6 @@ namespace WebApplication1.Database
         public DbSet<OutgoingSaldoEntity> OutgoingSaldos { get; set; }
         public DbSet<IncomingSaldoEntity> IncomingSaldos { get; set; }
         public DbSet<TurnoverEntity> Turnovers { get; set; }
+        public DbSet<FileInfoEntity> FileInfos { get; set; }
     }
 }
