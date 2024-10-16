@@ -27,13 +27,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = string.Empty;
+        c.RoutePrefix = "swagger"; // Swagger будет доступен по адресу /swagger
     });
 }
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Import}/{action=Import}/{id?}");
+});
+app.UseStaticFiles();
 app.Run();
 

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\views\\import\\import.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\views\\import\\import.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|c:\\users\\user\\desktop\\excelapi\\webapplication1\\webapplication1\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBABE5D2-9033-4DBD-AAE1-9298343D988D}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Import.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Views\\Import\\Import.cshtml",
+              "RelativeDocumentMoniker": "WebApplication1\\Views\\Import\\Import.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Views\\Import\\Import.cshtml",
+              "RelativeToolTip": "WebApplication1\\Views\\Import\\Import.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAmwDUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T17:25:53.841Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,20 +45,20 @@
               "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Program.cs",
               "RelativeToolTip": "WebApplication1\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACgAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-16T11:54:50.556Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ImportController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Controllers\\ImportController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\ImportController.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\excelAPI\\WebApplication1\\WebApplication1\\Controllers\\ImportController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\ImportController.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAuwFYAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAmwIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-16T11:14:45.784Z",
               "EditorCaption": ""

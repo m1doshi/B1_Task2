@@ -1,6 +1,46 @@
 [
   {
     "ContainingType": "WebApplication1.Controllers.ImportController",
+    "Method": "Import",
+    "RelativePath": "importController",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ImportController",
+    "Method": "GetImportedData",
+    "RelativePath": "importController/GetImportedData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ImportController",
     "Method": "ImportExcel",
     "RelativePath": "importController/import",
     "HttpMethod": "POST",

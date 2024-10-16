@@ -8,6 +8,7 @@ namespace WebApplication1.Repositories.Interfaces
         Task<int> CreateClass(ClassEntity entity);
         Task<IEnumerable<ClassEntity>> GetAllClasses();
         Task<ClassEntity> GetClassById(int id);
+        Task<ClassEntity> GetClassByName(string name);
         Task<ClassEntity> GetLastClass();
     }
 }

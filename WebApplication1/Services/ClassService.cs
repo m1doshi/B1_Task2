@@ -43,6 +43,16 @@ namespace WebApplication1.Services
                 Name = entity.Name
             };
         }
+        public async Task<ClassModel> GetClassByName(string name)
+        {
+            var entity = await repository.GetClassByName(name);
+            if (entity == null) return null;
+            return new ClassModel
+            {
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
         public async Task<ClassModel> GetLastClass()
         {
             var entity = await repository.GetLastClass();
