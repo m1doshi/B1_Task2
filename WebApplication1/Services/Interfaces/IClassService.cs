@@ -6,5 +6,7 @@ namespace WebApplication1.Services.Interfaces
     {
         Task<int> CreateClass(ClassModel model);
         Task<IEnumerable<ClassModel>> GetAllClasses();
+        Task<ClassModel> GetClassById(int id);
+        Task<ClassModel> GetLastClass();
     }
 }

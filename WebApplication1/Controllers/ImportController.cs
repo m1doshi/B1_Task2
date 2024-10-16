@@ -37,8 +37,7 @@ namespace WebApplication1.Controllers
                 var worksheet = package.Workbook.Worksheets[0];
                 int rowCount = worksheet.Dimension.End.Row;
 
-                ClassModel currentClass = null;
-                int classId = 0;
+                ClassModel newClass = null;
                 for (int row = 9; row < rowCount; row++)
                 {
                     var currentRow = worksheet.Cells[row, 1].Text.Trim();
@@ -46,26 +45,26 @@ namespace WebApplication1.Controllers
                     {
                         continue;
                     }
-                    if (currentRow == "ПО КЛАССУ" || currentRow == "БАЛАНС" || Regex.IsMatch(currentRow, @"^\d+\s\d+$"))
+                    if (currentRow == "ПО КЛАССУ" || currentRow == "БАЛАНС" || Regex.IsMatch(currentRow, @"^\d{2}$"))
                     {
                         continue;
                     }
                     if (Regex.IsMatch(currentRow, @"КЛАСС\s*\d+"))
                     {
-                        classId++;
-                        currentClass = new ClassModel
+                        newClass = new ClassModel
                         {
                             Name = currentRow.Substring(8)
                         };
-                        await classService.CreateClass(currentClass);
+                        await classService.CreateClass(newClass);
                         continue;
                     }
+                    var lastClass = await classService.GetLastClass();
                     var account = new AccountModel
                     {
                         Id = int.Parse(worksheet.Cells[row, 1].Text),
                         IncomingSaldoActive = decimal.Parse(worksheet.Cells[row, 2].Text),
                         IncomingSaldoPassive = decimal.Parse(worksheet.Cells[row, 3].Text),
-                        ClassId = classId
+                        ClassId = lastClass.Id
                     };
                     await accountService.CreateAccount(account);
                     var transaction = new TransactionModel

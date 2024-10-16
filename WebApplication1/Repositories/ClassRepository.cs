@@ -24,5 +24,14 @@ namespace WebApplication1.Repositories
         {
             return await context.Classes.ToListAsync();
         }
+
+        public async Task<ClassEntity> GetClassById(int id)
+        {
+            return await context.Classes.FindAsync(id);
+        }
+        public async Task<ClassEntity> GetLastClass()
+        {
+            return await context.Classes.OrderByDescending(c => c.Id).FirstOrDefaultAsync();
+        }
     }
 }
