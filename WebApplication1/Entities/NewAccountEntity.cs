@@ -3,16 +3,10 @@
 namespace WebApplication1.Entities
 {
     [Table("Account")]
-    public class AccountEntity
+    public class NewAccountEntity
     {
         [Column("Id")]
         public int Id { get; set; }
-
-        [Column("IncomingSaldoActive")]
-        public decimal IncomingSaldoActive { get; set; }
-
-        [Column("IncomingSaldoPassive")]
-        public decimal IncomingSaldoPassive { get; set; }
 
         [Column("ClassId")]
         public int ClassId { get; set; }

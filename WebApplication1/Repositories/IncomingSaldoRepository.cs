@@ -5,24 +5,24 @@ using WebApplication1.Repositories.Interfaces;
 
 namespace WebApplication1.Repositories
 {
-    public class AccountRepository : IAccountRepository
+    public class IncomingSaldoRepository : IIncomingSaldoRepository
     {
         private readonly MyDbContext context;
-        public AccountRepository(MyDbContext context)
+        public IncomingSaldoRepository(MyDbContext context)
         {
             this.context = context;
         }
 
-        public async Task<int> CreateAccount(AccountEntity entity)
+        public async Task<int> CreateIncomingSaldo(IncomingSaldoEntity entity)
         {
-            await context.Accounts.AddAsync(entity);
+            await context.IncomingSaldos.AddAsync(entity);
             await context.SaveChangesAsync();
             return entity.Id;
         }
 
-        public async Task<IEnumerable<AccountEntity>> GetAllAccounts()
+        public async Task<IEnumerable<IncomingSaldoEntity>> GetAllIncomingSaldos()
         {
-            return await context.Accounts.ToListAsync();
+            return await context.IncomingSaldos.ToListAsync();
         }
     }
 }

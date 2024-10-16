@@ -12,13 +12,21 @@ namespace WebApplication1.Controllers
     public class ImportController : ControllerBase
     {
         private readonly IClassService classService;
-        private readonly IAccountService accountService;
-        private readonly ITransactionService transactionService;
-        public ImportController(IClassService classService, IAccountService accountService, ITransactionService transactionService)
+        private readonly INewAccountService newAccountService;
+        private readonly ITurnoverService turnoverService;
+        private readonly IIncomingSaldoService incomingSaldoService;
+        private readonly IOutgoingSaldoService outgoingSaldoService;
+        public ImportController(IClassService classService, 
+            INewAccountService newAccountService, 
+            ITurnoverService turnoverService,
+            IIncomingSaldoService incomingSaldoService,
+            IOutgoingSaldoService outgoingSaldoService)
         {
             this.classService = classService;
-            this.accountService = accountService;
-            this.transactionService = transactionService;
+            this.newAccountService = newAccountService;
+            this.turnoverService = turnoverService;
+            this.incomingSaldoService = incomingSaldoService;
+            this.outgoingSaldoService = outgoingSaldoService;
         }
 
         [HttpPost("import")]
@@ -59,23 +67,34 @@ namespace WebApplication1.Controllers
                         continue;
                     }
                     var lastClass = await classService.GetLastClass();
-                    var account = new AccountModel
+                    var account = new NewAccountModel
                     {
                         Id = int.Parse(worksheet.Cells[row, 1].Text),
-                        IncomingSaldoActive = decimal.Parse(worksheet.Cells[row, 2].Text),
-                        IncomingSaldoPassive = decimal.Parse(worksheet.Cells[row, 3].Text),
                         ClassId = lastClass.Id
                     };
-                    await accountService.CreateAccount(account);
-                    var transaction = new TransactionModel
+                    await newAccountService.CreateAccount(account);
+                    var incomingSaldo = new IncomingSaldoModel
                     {
-                        AccountId = account.Id,
+                        Active = decimal.Parse(worksheet.Cells[row, 2].Text),
+                        Passive = decimal.Parse(worksheet.Cells[row, 3].Text),
+                        AccountId = account.Id
+                    };
+                    var lastIncomingSaldoId = await incomingSaldoService.CreateIncomingSaldo(incomingSaldo);
+                    var turnover = new TurnoverModel
+                    {
                         Debit = decimal.Parse(worksheet.Cells[row, 4].Text),
                         Credit = decimal.Parse(worksheet.Cells[row, 5].Text),
-                        OutgoingSaldoActive = decimal.Parse(worksheet.Cells[row, 6].Text),
-                        OutgoingSaldoPassive = decimal.Parse(worksheet.Cells[row, 7].Text)
+                        AccountId = account.Id
                     };
-                    await transactionService.CreateTransaction(transaction);
+                    var lastTurnoverId = await turnoverService.CreateTurnover(turnover);
+                    var outgoingSaldo = new OutgoingSaldoModel
+                    {
+                        Active = decimal.Parse(worksheet.Cells[row, 6].Text),
+                        Passive = decimal.Parse(worksheet.Cells[row, 7].Text),
+                        IncomingSaldoId = lastIncomingSaldoId,
+                        TurnoverId = lastTurnoverId
+                    };
+                    await outgoingSaldoService.CreateOutgoingSaldo(outgoingSaldo);
                 }
             }
             return Ok("File imported successfully.");

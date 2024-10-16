@@ -10,12 +10,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBaseConfig")));
-builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IClassService, ClassService>();
-builder.Services.AddScoped<ITransactionService, TransactionService>();
-builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<INewAccountService, NewAccountService>();
+builder.Services.AddScoped<ITurnoverService, TurnoverService>();
+builder.Services.AddScoped<IIncomingSaldoService, IncomingSaldoService>();
+builder.Services.AddScoped<IOutgoingSaldoService, OutgoingSaldoService>();
 builder.Services.AddScoped<IClassRepository, ClassRepository>();
-builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<INewAccountRepository, NewAccountRepository>();
+builder.Services.AddScoped<ITurnoverRepository, TurnoverRepository>();
+builder.Services.AddScoped<IIncomingSaldoRepository, IncomingSaldoRepository>();
+builder.Services.AddScoped<IOutgoingSaldoRepository, OutgoingSaldoRepository>();
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
@@ -23,7 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = string.Empty; // чтобы открыть Swagger на корневом URL
+        c.RoutePrefix = string.Empty;
     });
 }
 app.UseHttpsRedirection();

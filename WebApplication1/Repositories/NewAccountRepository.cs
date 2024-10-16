@@ -5,24 +5,24 @@ using WebApplication1.Repositories.Interfaces;
 
 namespace WebApplication1.Repositories
 {
-    public class TransactionRepository:ITransactionRepository
+    public class NewAccountRepository : INewAccountRepository
     {
         private readonly MyDbContext context;
-        public TransactionRepository(MyDbContext context)
+        public NewAccountRepository(MyDbContext context)
         {
             this.context = context;
         }
 
-        public async Task<int> CreateTransaction(TransactionEntity entity)
+        public async Task<int> CreateAccount(NewAccountEntity entity)
         {
-            await context.Transactions.AddAsync(entity);
+            await context.Accounts.AddAsync(entity);
             await context.SaveChangesAsync();
             return entity.Id;
         }
 
-        public async Task<IEnumerable<TransactionEntity>> GetAllTransactions()
+        public async Task<IEnumerable<NewAccountEntity>> GetAllAccounts()
         {
-            return await context.Transactions.ToListAsync();
+            return await context.Accounts.ToListAsync();
         }
     }
 }

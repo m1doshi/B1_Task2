@@ -11,7 +11,9 @@ namespace WebApplication1.Database
         }
 
         public DbSet<ClassEntity> Classes { get; set; }
-        public DbSet<AccountEntity> Accounts { get; set; }
-        public DbSet<TransactionEntity> Transactions { get; set; }
+        public DbSet<NewAccountEntity> Accounts { get; set; }
+        public DbSet<OutgoingSaldoEntity> OutgoingSaldos { get; set; }
+        public DbSet<IncomingSaldoEntity> IncomingSaldos { get; set; }
+        public DbSet<TurnoverEntity> Turnovers { get; set; }
     }
 }
