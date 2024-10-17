@@ -4,7 +4,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Repositories
 {
-    public class DataRepository
+    public class DataRepository //Репозиторий для подтягивания всех связанных данных по конкретному файлу из БД 
     {
         private readonly MyDbContext context;
 
@@ -16,12 +16,11 @@ namespace WebApplication1.Repositories
         public IEnumerable<AccountDataViewModel> GetDataByFileId(int fileId)
         {
 
-            var accounts = context.Accounts
-                .Where(a => a.FileId == fileId)
+            var accounts = context.Accounts     //Сначала подтягивается счёт с навигационным св-вом
                 .Include(a => a.Class)
                 .ToList();
 
-            var accountData = accounts.Select(account => new AccountDataViewModel
+            var accountData = accounts.Select(account => new AccountDataViewModel   //Далее за счётом подтягиваются все остальные данные
             {
                 AccountId = account.Id,
                 ClassName = account.Class.Name,

@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Models
 {
-    public class AccountDataViewModel
+    public class AccountDataViewModel   
     {
         public int AccountId { get; set; }
         public string ClassName { get; set; }

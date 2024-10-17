@@ -9,10 +9,10 @@ namespace WebApplication1.Database
         {
             Database.EnsureCreated();
         }
-
-        public DbSet<ClassEntity> Classes { get; set; }
-        public DbSet<NewAccountEntity> Accounts { get; set; }
-        public DbSet<OutgoingSaldoEntity> OutgoingSaldos { get; set; }
+            //Регистрация сущностей для работы с ними    
+        public DbSet<ClassEntity> Classes { get; set; } 
+        public DbSet<NewAccountEntity> Accounts { get; set; }  
+        public DbSet<OutgoingSaldoEntity> OutgoingSaldos { get; set; }  
         public DbSet<IncomingSaldoEntity> IncomingSaldos { get; set; }
         public DbSet<TurnoverEntity> Turnovers { get; set; }
         public DbSet<FileInfoEntity> FileInfos { get; set; }

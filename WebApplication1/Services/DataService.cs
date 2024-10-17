@@ -5,7 +5,7 @@ using WebApplication1.Repositories;
 
 namespace WebApplication1.Services
 {
-    public class DataService
+    public class DataService    //Сервис для получения данных по конкретному файлу
     {
         private readonly DataRepository repository;
 
